@@ -196,7 +196,7 @@ DLL INT DLL_CALL request(LPCTSTR method, LPCTSTR url, LPCTSTR postFile, LPCTSTR 
     url_parse->path, // Object Name
     _T("HTTP/1.1"), // Version
     url, // Referer
-    szAcceptTypes, // Accept Type	
+    szAcceptTypes, // Accept Type  
     INTERNET_FLAG_NO_COOKIES |
     INTERNET_FLAG_NO_AUTO_REDIRECT |
     INTERNET_FLAG_RELOAD |
@@ -250,8 +250,8 @@ DLL INT DLL_CALL request(LPCTSTR method, LPCTSTR url, LPCTSTR postFile, LPCTSTR 
   DWORD dwBytesRead;
   DWORD buff_len = 4096;
   do{
-		LPBYTE lpBuffer = (LPBYTE)calloc(buff_len, sizeof(BYTE));
-		if(!InternetReadFile(hRequest, (LPVOID)lpBuffer, buff_len-1, &dwBytesRead)){
+    LPBYTE lpBuffer = (LPBYTE)calloc(buff_len, sizeof(BYTE));
+    if(!InternetReadFile(hRequest, (LPVOID)lpBuffer, buff_len-1, &dwBytesRead)){
       CloseHandle(fp);
       InternetCloseHandle(hRequest);
       InternetCloseHandle(hConnection);
@@ -274,7 +274,7 @@ DLL INT DLL_CALL request(LPCTSTR method, LPCTSTR url, LPCTSTR postFile, LPCTSTR 
       }
     }
     free(lpBuffer);
-	}while(dwBytesRead);
+  }while(dwBytesRead);
   CloseHandle(fp);
   InternetCloseHandle(hRequest);
   InternetCloseHandle(hConnection);
